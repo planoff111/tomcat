@@ -5,26 +5,21 @@
     <title>Registration</title>
 </head>
 <body>
-<form method="post" action="/personalPage.jsp">
+<div class="registration-form">
+        <h1>Registration</h1>
+        <form method="post" action="/register">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="username">
 
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
-        <hr>
+                <label for="email">Email</label>
+                <input type="text" id="email" name="email">
 
-        <label for="email"><b>Email</b></label>
-        <input type="text" id="email" placeholder="Enter Email" name="email">
+                <label for="password">Password</label>
+                <input type="text" id="password" name="password">
 
-        <label for="username"><b>Username</b></label>
-        <input type="text" id="username" placeholder="Enter Username" name="username" >
-
-        <label for="password"><b>Repeat Password</b></label>
-        <input type="password" id="password" placeholder="Enter Password" name="password" >
-        <hr>
-
-        <button type="submit">Register</button>
-
-
-</form>
+                <button type="submit">Submit Registration</button>
+        </form>
+</div>
 
 
 </body>

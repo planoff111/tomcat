@@ -6,7 +6,7 @@
 </head>
 <body>
 hello
-<a href="orders.jsp">orders</a>
+<a href="makeorder.jsp">make order</a>
 <a href="registration.jsp">registration</a>
 </body>
 </html>

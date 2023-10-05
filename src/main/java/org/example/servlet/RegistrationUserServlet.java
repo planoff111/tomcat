@@ -1,7 +1,6 @@
 package org.example.servlet;
 
 import org.example.dto.UserDto;
-import org.example.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,10 +8,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet("/registration")
-public class RegistrationUserServlet extends HttpServlet {
+import java.util.ArrayList;
+import java.util.List;
 
-    private UserService userService = new UserService();
+@WebServlet(name = "registration",value = "/register")
+public class RegistrationUserServlet extends HttpServlet {
+    public static List<UserDto> registeredUsers = new ArrayList<>();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -21,9 +23,17 @@ public class RegistrationUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UserDto user = userService.saveUser(req);
+        UserDto user = UserDto.builder()
+                .username(req.getParameter("username"))
+                .email(req.getParameter("email"))
+                .password(req.getParameter("password"))
+                .build();
+
+        registeredUsers.add(user);
+
+        req.setAttribute("name", user.getUsername());
         req.setAttribute("email", user.getEmail());
-        req.setAttribute("username", user.getUsername());
-        req.getRequestDispatcher("personalPage.jsp").forward(req,resp);
+
+        req.getRequestDispatcher("personalpage.jsp").forward(req, resp);
     }
 }

@@ -1,14 +1,11 @@
 package org.example.dto;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
 @ToString
+@Builder
 public class UserDto {
 
 
